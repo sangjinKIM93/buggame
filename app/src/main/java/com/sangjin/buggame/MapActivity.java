@@ -28,6 +28,10 @@ import com.sangjin.buggame.BugList.BugListActivity;
 import com.sangjin.buggame.Room.AppDatabase;
 import com.sangjin.buggame.Room.Bug;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,29 +134,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         }
 
 
-
-
-//
-//        final Marker marker2 = new Marker();
-//        marker2.setPosition(new LatLng(37.4670135, 126.9783740));
-//        marker2.setMap(naverMap);
-//        marker2.setTag("마커 2");
-//
-//        marker2.setOnClickListener(new Overlay.OnClickListener() {
-//            @Override
-//            public boolean onClick(@NonNull Overlay overlay) {
-//
-//                infoWindow.open(marker2);
-//
-//                //클릭시 정보창 보이기
-//                linear_info.setVisibility(View.VISIBLE);
-//
-//                return true;
-//            }
-//        });
-
-        //카메라 줌 설정
-        LatLng location = new LatLng(37.5670135, 126.9783740);
+        //카메라 줌 설정 : 가장 최근 위치로 설정
+        LatLng location = new LatLng(mArrayList.get(mArrayList.size()-1).getLatitude(), mArrayList.get(mArrayList.size()-1).getLongitude());
         CameraPosition cameraPosition = new CameraPosition(location, 10);
         naverMap.setCameraPosition(cameraPosition);
 
