@@ -8,7 +8,7 @@ acceleometer 센서를 이용하여 벌레를 잡을 수 있는 게임입니다.
   
 # 시연 영상  
 
-//[![Video Label](http://img.youtube.com/vi/dDgNmrb-p10/0.jpg)](https://www.youtube.com/watch?v=dDgNmrb-p10&feature=youtu.be)
+
 
 
 <br><br>
