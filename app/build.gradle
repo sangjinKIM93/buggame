@@ -41,5 +41,11 @@ dependencies {
     //recyclerView
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
+    //floating action Button
+    implementation 'com.google.android.material:material:1.1.0'
+
+    //cardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+
 
 }

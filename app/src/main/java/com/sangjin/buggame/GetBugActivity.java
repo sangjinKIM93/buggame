@@ -29,6 +29,8 @@ public class GetBugActivity extends AppCompatActivity implements SensorEventList
     private Sensor countSensor;
     int count = 0;
 
+    private int bugImg;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,22 @@ public class GetBugActivity extends AppCompatActivity implements SensorEventList
         iv_getBug = findViewById(R.id.iv_getBug);
         tv_count = findViewById(R.id.tv_count);
         layout_getBug = findViewById(R.id.layout_getBug);
+
+        int bugRandom= (int)(Math.random()*10);
+        if(bugRandom<2){
+            bugImg = R.drawable.img_bug1;
+        }
+        else if(bugRandom >= 2 && bugRandom<5){
+            bugImg = R.drawable.img_bug2;
+        }
+        else if(bugRandom >= 5 && bugRandom <8){
+            bugImg = R.drawable.img_bug3;
+        }
+        else{
+            bugImg = R.drawable.img_bug4;
+        }
+
+        iv_getBug.setImageResource(bugImg);
 
         //벌레 애니메이션
         Animation animRotate = AnimationUtils.loadAnimation(this, R.anim.rotate);
@@ -72,13 +90,13 @@ public class GetBugActivity extends AppCompatActivity implements SensorEventList
 
             //카운트에 따라 배경색 바꿔주기
             int colorPercent = count * 10;
-            layout_getBug.setBackgroundColor(Color.argb(colorPercent, 255, 135, 135));
+            layout_getBug.setBackgroundColor(Color.argb(colorPercent, 255, 175, 175));
 
             //카운트가 10이 되면 센서 종료 및 알람창 띄워주기
             if(count == 10){
                 sensorManager.unregisterListener(this);
                 final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-                builder.setTitle("벌레를 잡았습니다.");
+                builder.setTitle("## 벌레를 잡았습니다 ##");
                 builder.setMessage("잡은 벌레를 캐릭터에게 먹이겠습니까?");
                 builder.setPositiveButton("예",
                         new DialogInterface.OnClickListener() {
@@ -86,6 +104,7 @@ public class GetBugActivity extends AppCompatActivity implements SensorEventList
 
                                 //벌레 등록 액티비티로 이동
                                 Intent intent = new Intent(GetBugActivity.this, EatBugActivity.class);
+                                intent.putExtra("bugImg", bugImg);
                                 startActivity(intent);
 
                                 finish();

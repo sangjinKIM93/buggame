@@ -28,12 +28,14 @@ public class BugListAdapter extends RecyclerView.Adapter<BugListAdapter.CustomVi
     public class CustomViewHolder extends RecyclerView.ViewHolder {
 
         protected ImageView item_image;
-        protected TextView item_name;
+        protected TextView item_name, item_address, item_date;
 
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             item_image = itemView.findViewById(R.id.item_image);
             item_name = itemView.findViewById(R.id.item_name);
+            item_address = itemView.findViewById(R.id.item_address);
+            item_date = itemView.findViewById(R.id.item_date);
         }
 
     }
@@ -52,8 +54,12 @@ public class BugListAdapter extends RecyclerView.Adapter<BugListAdapter.CustomVi
     @Override
     public void onBindViewHolder(@NonNull CustomViewHolder holder, int position) {
 
+        String addressEdit = mList.get(position).getAddress().replace("대한민국", "");
+
         holder.item_image.setImageResource(mList.get(position).getBugImg());
         holder.item_name.setText(mList.get(position).getBugName());
+        holder.item_address.setText(addressEdit);
+        holder.item_date.setText(mList.get(position).getDate());
 
     }
 

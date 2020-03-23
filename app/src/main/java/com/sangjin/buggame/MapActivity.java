@@ -136,12 +136,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //카메라 줌 설정 : 가장 최근 위치로 설정
         LatLng location = new LatLng(mArrayList.get(mArrayList.size()-1).getLatitude(), mArrayList.get(mArrayList.size()-1).getLongitude());
-        CameraPosition cameraPosition = new CameraPosition(location, 10);
+        CameraPosition cameraPosition = new CameraPosition(location, 14);
         naverMap.setCameraPosition(cameraPosition);
 
-        //한 지역에서만 한다면 중간값만 찾고 어림짐작으로 zoom 10~12 해주면 되는데... 만약에 정말 먼 곳에서 잡았다면?
-        //마커가 딱 보이는 크기만큼만 카메라를 줌하는 메서드가 있으면 좋겠는데...
-        //없다면 내가 한번 계산해보자. 네이버는 내 위치 정보를 가지고 있는건지. 아니면 밀접지역을 계산하는 공식이 있는걸수도...
 
         //정보창
         infoWindow = new InfoWindow();

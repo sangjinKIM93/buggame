@@ -31,14 +31,17 @@ public class EatBugActivity extends AppCompatActivity implements SensorEventList
     private SensorManager sensorManager;
     private int bugImg;
 
+    AlertDialog.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);  //가로,세로 전환 금지
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);  //가로,세로 전환 금지
 
         setContentView(R.layout.activity_eat_bug);
 
-
+        Intent intent = getIntent();
+        bugImg = intent.getIntExtra("bugImg", 0);
 
         BallView ballView = new BallView(this);     //뭔지 잘 모르겠지만 ballView라는 것으로 대체한다.
         FrameLayout fl = findViewById(R.id.frameLayout1);
@@ -52,13 +55,31 @@ public class EatBugActivity extends AppCompatActivity implements SensorEventList
         yMax = (float) size.y - 300;
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //센서 매니저 초기화
+
+        //초기 설명 alert
+        showAlert();
+
+    }
+
+
+    private void showAlert(){
+        builder = new AlertDialog.Builder(this);
+        //builder.setTitle("## 굶주린 핑글이에게 벌레를 먹여주세요 ##");
+        builder.setMessage("핸드폰을 기울여 벌레를 캐릭터 입 속에 넣어주세요");
+        builder.setPositiveButton("START",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        sensorManager.registerListener(EatBugActivity.this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
+                    }
+                });
+        builder.show();
     }
 
 
     @Override
     protected void onStart() {
         super.onStart();
-        sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_GAME);
+
     }
 
 
@@ -209,25 +230,7 @@ public class EatBugActivity extends AppCompatActivity implements SensorEventList
         public BallView(Context context) {
             super(context);
 
-            Bitmap ballSrc;
-            //random값으로 벌레 이미지를 변경해보자.
-            int bugRandom= (int)(Math.random()*10);
-            if(bugRandom<2){
-                ballSrc = BitmapFactory.decodeResource(getResources(), R.drawable.img_bug1);
-                bugImg = R.drawable.img_bug1;
-            }
-            else if(bugRandom >= 2 && bugRandom<5){
-                ballSrc = BitmapFactory.decodeResource(getResources(), R.drawable.img_bug2);
-                bugImg = R.drawable.img_bug2;
-            }
-            else if(bugRandom >= 5 && bugRandom <8){
-                ballSrc = BitmapFactory.decodeResource(getResources(), R.drawable.img_bug3);
-                bugImg = R.drawable.img_bug3;
-            }
-            else{
-                ballSrc = BitmapFactory.decodeResource(getResources(), R.drawable.img_bug4);
-                bugImg = R.drawable.img_bug4;
-            }
+            Bitmap  ballSrc = BitmapFactory.decodeResource(getResources(), bugImg);
 
             final int dstWidth = 100;
             final int dstHeight = 100;

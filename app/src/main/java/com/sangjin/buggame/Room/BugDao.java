@@ -17,12 +17,15 @@ public interface BugDao {
     @Query("SELECT * FROM Bug")
     List<Bug> getAllList();
 
+    @Query("DELETE FROM Bug")
+    void deleteAll();
+
     @Insert
     void insert(Bug bug);
 
     @Update
-    void update(Bug todo);
+    void update(Bug bug);
 
     @Delete
-    void delete(Bug todo);
+    void delete(Bug bug);
 }

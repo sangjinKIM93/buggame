@@ -24,10 +24,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sangjin.buggame.BugList.BugListActivity;
 import com.sangjin.buggame.Room.AppDatabase;
 import com.sangjin.buggame.Room.Bug;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -77,7 +81,11 @@ public class RegisterBugActivity extends AppCompatActivity {
         btn_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 String bugName = et_bugName.getText().toString();
+                //현재 날짜 가져오기
+                Date currentTime = Calendar.getInstance().getTime();
+                String date = new SimpleDateFormat("yyyy.MM.dd", Locale.getDefault()).format(currentTime);
 
                 Bug bug = new Bug();
                 bug.setBugName(bugName);
@@ -85,21 +93,19 @@ public class RegisterBugActivity extends AppCompatActivity {
                 bug.setLatitude(latitude);
                 bug.setLongitude(longitude);
                 bug.setBugImg(bugImg);
-                bug.setDate("2099.01.01");
+                bug.setDate(date);
 
                 AppDatabase db = Room.databaseBuilder(RegisterBugActivity.this, AppDatabase.class, "bug-db")
                         .allowMainThreadQueries()
                         .build();
 
+                //삭제
+//                db.bugDao().deleteAll();
+
                 //입력
                 db.bugDao().insert(bug);
 
-                //쿼리
-//                db.bugDao().getAll().observe(RegisterBugActivity.this, bugs -> {
-//                    tv_place.setText(bugs.toString());
-//                });
-
-                Intent intent = new Intent(RegisterBugActivity.this, MapActivity.class);
+                Intent intent = new Intent(RegisterBugActivity.this, BugListActivity.class);
                 startActivity(intent);
 
             }
