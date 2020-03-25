@@ -7,7 +7,15 @@ acceleometer 센서를 이용하여 벌레를 잡을 수 있는 게임입니다.
 <br><br> 
   
 # 작품 스크린샷
-![1](C:\Users\sangjin kim\Desktop\벌레게임\KakaoTalk_20200325_174440619_01.jpg)
+<div>
+  <img width="200" src="https://user-images.githubusercontent.com/62230118/77533818-e8730780-6eda-11ea-9d92-1b86f63b6e75.jpg">
+  <img width="200" src="https://user-images.githubusercontent.com/62230118/77533854-fb85d780-6eda-11ea-88e1-e5f44645f96b.jpg">
+  <img width="200" src="https://user-images.githubusercontent.com/62230118/77533865-03457c00-6edb-11ea-87dc-1d29b6a7fa06.jpg">
+</div>
+<div>
+  <img width="200" src="https://user-images.githubusercontent.com/62230118/77533877-0c364d80-6edb-11ea-9212-3025e01cdf39.jpg">
+  <img width="200" src="https://user-images.githubusercontent.com/62230118/77533888-122c2e80-6edb-11ea-99c9-375b0d746836.jpg">
+</div>
 
 
 
