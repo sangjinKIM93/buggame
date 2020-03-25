@@ -6,7 +6,8 @@ acceleometer 센서를 이용하여 벌레를 잡을 수 있는 게임입니다.
 
 <br><br> 
   
-# 시연 영상  
+# 작품 스크린샷
+![1](C:\Users\sangjin kim\Desktop\벌레게임\KakaoTalk_20200325_174440619_01.jpg)
 
 
 
