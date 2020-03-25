@@ -51,8 +51,8 @@ public class EatBugActivity extends AppCompatActivity implements SensorEventList
         Point size = new Point();
         Display display = getWindowManager().getDefaultDisplay();
         display.getSize(size);
-        xMax = (float) size.x - 200;
-        yMax = (float) size.y - 300;
+        xMax = (float) ((float) size.x *0.85);
+        yMax = (float) ((float) size.y *0.85);
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);   //센서 매니저 초기화
 
@@ -99,8 +99,8 @@ public class EatBugActivity extends AppCompatActivity implements SensorEventList
             updateBall();
 
             //입 안에 들어가면 게임 성공  -> 이 수치를 조절해서 난이도 조절 가능.
-            float xSuccess = xMax - 35;
-            float ySuccess = yMax - 35;
+            float xSuccess = xMax - 40;
+            float ySuccess = yMax - 40;
 
             //벽에 닿으면 게임 종료
             if(xPos == xMax){
@@ -232,8 +232,8 @@ public class EatBugActivity extends AppCompatActivity implements SensorEventList
 
             Bitmap  ballSrc = BitmapFactory.decodeResource(getResources(), bugImg);
 
-            final int dstWidth = 100;
-            final int dstHeight = 100;
+            final int dstWidth = 90;
+            final int dstHeight = 90;
             ball = Bitmap.createScaledBitmap(ballSrc, dstWidth, dstHeight, true);
         }
 
