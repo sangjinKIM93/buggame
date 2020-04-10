@@ -35,3 +35,9 @@ acceleometer 센서를 이용한 벌레잡기 게임입니다.
     
 # 사용 기술
 java, android
+
+
+<br><br>
+    
+# 추가 수정
+- Viewmodel+LiveData를 적용하여 GetBugActivity에서 화면 전환시 bugImg, count 초기화 문제 해결(20.04.10)
