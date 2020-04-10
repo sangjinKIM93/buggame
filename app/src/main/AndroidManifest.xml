@@ -28,9 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".GetBugActivity"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+        <activity android:name=".GetBugActivity"/>
         <activity android:name=".EatBugActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
