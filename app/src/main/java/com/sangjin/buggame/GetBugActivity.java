@@ -54,7 +54,7 @@ public class GetBugActivity extends AppCompatActivity implements SensorEventList
         //버그 이미지 받아서 넣어주기
         getBugImg();
 
-        viewModel.getLiveData().observe(this, new Observer<Integer>() {
+        viewModel.getCount().observe(this, new Observer<Integer>() {
             @Override
             public void onChanged(Integer count) {
                 //카운트 세주기
@@ -83,7 +83,7 @@ public class GetBugActivity extends AppCompatActivity implements SensorEventList
 
     private void getBugImg(){
         //뷰모델에서 버그 이미지 받아서 넣어주기
-        iv_getBug.setImageResource(viewModel.bugImg);
+        iv_getBug.setImageResource(viewModel.getBugImg());
     }
 
     @Override
@@ -124,7 +124,7 @@ public class GetBugActivity extends AppCompatActivity implements SensorEventList
 
                             //벌레 등록 액티비티로 이동
                             Intent intent = new Intent(GetBugActivity.this, EatBugActivity.class);
-                            intent.putExtra("bugImg", viewModel.bugImg);
+                            intent.putExtra("bugImg", viewModel.getBugImg());
                             startActivity(intent);
 
                             finish();

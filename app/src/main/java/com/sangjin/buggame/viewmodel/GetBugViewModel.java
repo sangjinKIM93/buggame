@@ -7,8 +7,8 @@ import com.sangjin.buggame.R;
 
 public class GetBugViewModel extends ViewModel {
 
-    public int bugImg;
-    public MutableLiveData<Integer> count;
+    private int bugImg;
+    private MutableLiveData<Integer> count;
 
     public GetBugViewModel() {
         super();
@@ -17,13 +17,16 @@ public class GetBugViewModel extends ViewModel {
         count.setValue(0);
     }
 
-    public MutableLiveData<Integer> getLiveData(){
+    public MutableLiveData<Integer> getCount(){
         if(count == null){
             count = new MutableLiveData<Integer>();
         }
         return count;
     }
 
+    public int getBugImg(){
+        return bugImg;
+    }
 
     //게임 시작시 랜덤으로 벌레 선택
     private int selectBug(){
